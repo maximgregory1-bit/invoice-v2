@@ -1,12 +1,12 @@
-import { redirect } from "next/navigation"
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-// import { auth } from "@/lib/next-auth"
+export default async function HomePage() {
+  const session = await auth();
 
-export default async function Home() {
-  // const session = await auth();
-  // if(session?.user) {
-  //   redirect("/dashboard")
-  // }
+  if (session) {
+    redirect("/dashboard");
+  }
 
-  redirect("/signin")
+  redirect("/signin");
 }
